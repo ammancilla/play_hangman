@@ -20,7 +20,7 @@ def display_game_banner(base_width, base_idt)
 end
 
 def display_game_board(hangman_game, base_width, base_idt, notice = {})
-  system('cls')
+  cls
   display_game_banner(base_width, base_idt)
   display_notice(notice)
   putsi "Clue: '#{hangman_game.clue}'" + nl(3) if hangman_game.clue.length > 0
@@ -61,7 +61,7 @@ while keep_playing == 'y'
     # Read data
     data_error = false
     begin
-      system('cls')
+      cls
       display_game_banner(base_width, base_idt)
       display_notice(notice)
       word = hidden_input('Word to guess (will be hidden):', base_idt)
