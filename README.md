@@ -19,3 +19,11 @@ $ play_hangman
 ```
 ## Build your own Hangman game
 - hangman_engine (https://github.com/ammancilla/hangman_engine)
+
+## Window Users
+To play you will need the `win32console` gem.
+
+Get it:
+```ruby
+gem install 'win32console'
+```
