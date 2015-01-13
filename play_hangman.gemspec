@@ -1,12 +1,12 @@
 Gem::Specification.new do |spec|
-  spec.date        = '2015-01-12'
-  spec.version     = '0.0.2'
+  spec.date        = '2015-01-13'
+  spec.version     = '0.0.3'
   spec.name        = 'play_hangman'
-  spec.summary     = %q(Play HANGMAN on your console! Install, run the command 'play_hangman' and enjoy.)
+  spec.summary     = %q(Play Hangman on your console! Install, run the command 'play_hangman' and enjoy.)
   spec.description =
     [
-      "Play HANGMAN on your console! Install, run the command 'play_hangman' and enjoy.",
-      "This game was built using the 'hangman_engine' gem. Check it out to build your own HANGMAN version.",
+      "Play Hangman on your console! Install, run the command 'play_hangman' and enjoy.",
+      "This game was built using the 'hangman_engine' gem. Check it out to build your own Hangman game.",
     ].join("\n")
   spec.license     = 'MIT'
   spec.homepage    = 'https://github.com/ammancilla/play_hangman'
