@@ -4,11 +4,23 @@
 # Ready to play console version of HANGMAN built using 'hangman_engine' gem
 # 
 # --------------------------------------------------------------------------
+
+# General requires
 require 'rbconfig'
-require 'win32console' if (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
 require 'hangman_engine'
 require 'console_view_helper'
 include ConsoleViewHelper
+
+# Windows requires
+if (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
+  begin
+    require 'win32console'
+  rescue LoadError
+    error_msg = nl + banner('ERROR', subtitle: "win32console gem is missing") + nl
+    error_msg << "To solve this error install win32console gem. Just run: 'gem install win32console'."
+    abort error_msg
+  end
+end
 
 # --- Helper Methods
 def display_notice(notice)
@@ -16,7 +28,7 @@ def display_notice(notice)
 end
 
 def display_game_banner(base_width, base_idt)
-  puts nl(2) + banner('HANGMAN GAME', subtitle: 'by Alfonso Mancilla', width: base_width, indent: base_idt) + nl(2)
+  puts nl + banner('HANGMAN GAME', subtitle: 'by Alfonso Mancilla', width: base_width, indent: base_idt) + nl
 end
 
 def display_game_board(hangman_game, base_width, base_idt, notice = {})
@@ -102,11 +114,12 @@ while keep_playing == 'y'
     puts nl
   else
     display_lost(base_width)
-    puts nl(3)
-    putsi align("Sol.: #{hangman_game.word}", base_width, :center) + nl(2)
+    puts nl(2)
+    putsi align("Answer: #{hangman_game.word}", base_width, :center) + nl(2)
   end
   putsi underscore * base_width + nl(3)
 
   # Play again?
   keep_playing = input('New game? (y/n):', 1)[0].downcase
 end
+cls
